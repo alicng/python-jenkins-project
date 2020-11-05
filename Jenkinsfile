@@ -39,6 +39,13 @@ pipeline{
                 }
             }
         }
+        stage('build'){
+            agent any
+            steps{
+                sh "docker build -t ali/handson-jenkins ."
+                sh "docker 070980478435.dkr.ecr.us-east-1.amazonaws.com/ali/jenkins-handson/ali/handson-jenkins:latest"
+            }
+        }
     }
 }
 
