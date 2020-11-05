@@ -42,8 +42,8 @@ pipeline{
         stage('build'){
             agent any
             steps{
-                sh "docker build -t ali/handson-jenkins ."
-                sh "docker 070980478435.dkr.ecr.us-east-1.amazonaws.com/ali/jenkins-handson/ali/handson-jenkins:latest"
+                sh "docker build -t ali/jenkins-handson ."
+                sh "docker tag ali/jenkins-handson:latest 070980478435.dkr.ecr.us-east-1.amazonaws.com/ali/jenkins-handson:latest"
             }
         }
     }
