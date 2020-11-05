@@ -50,14 +50,16 @@ pipeline{
         stage('push'){
                     agent any
                     steps{
-                        sh "(Get-ECRLoginCommand).Password | docker login --username AWS --password-stdin 070980478435.dkr.ecr.us-east-1.amazonaws.com"
+                        sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 070980478435.dkr.ecr.us-east-1.amazonaws.com"
                         sh "docker push 070980478435.dkr.ecr.us-east-1.amazonaws.com/ali/jenkins-handson:latest"
             }
         }
+        
+        
+        }
+        }
 
-    }
-}
-
+    
     
  
 
