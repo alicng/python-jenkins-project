@@ -54,7 +54,13 @@ pipeline{
                         sh "docker push 070980478435.dkr.ecr.us-east-1.amazonaws.com/ali/jenkins-handson:latest"
             }
         }
-        
+        stage('compose'){
+            agent any
+            steps{
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 070980478435.dkr.ecr.us-east-1.amazonaws.com"
+                sh "docker-compose up -d"
+            }
+        }
         
         }
         }
